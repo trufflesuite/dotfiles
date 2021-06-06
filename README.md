@@ -7,6 +7,10 @@ Useful scripts for Truffle testers and maintainers on *nix OS.
   * [dotfiles](#dotfiles)
 - [Command Reference](#command-reference)
   * [reprod](#reprod)
+  * [list-reprod-year](#list-reprod-year)
+  * [list-reprod-month](#list-reprod-month)
+  * [list-reprod-day](#list-reprod-day)
+  * [list-reprod-today](#list-reprod-today)
   * [show-truffle-env](#show-truffle-env)
   * [truffle-core variants](#truffle-core-variants)
     + [use-truffle-core](#use-truffle-core)
@@ -73,6 +77,45 @@ work/reproduce      <-- This is REPROD_ROOT
 │       └── 25
 │           └── safe-eval
 
+```
+
+### list-reprod-year
+
+List all reprod folders for a year.
+
+```
+usage: list-reprod-year [ year  ]
+Options:
+  year      specify the year. [default: current year]
+```
+
+
+### list-reprod-month
+
+List all reprod folders for a month.
+
+```
+usage: list-reprod-month [ month  ]
+Options:
+  month     specify the month. [default: current month]
+```
+
+### list-reprod-day
+
+List all reprod folders for a day in current month.
+
+```
+usage: list-reprod-day [ day  ]
+Options:
+  day       specify the day. [default: today]
+```
+
+### list-reprod-today
+
+You busy 🐝! List all reprod folders for today
+
+```
+usage: list-reprod-today
 ```
 
 ### show-truffle-env

@@ -1,10 +1,20 @@
 ## Executing these functions will create aliases for truffle & db-kit
-## 
 
-## aliases
 show-truffle-env () {
-  print truffle: $(which truffle)
-  print db-kit: $(which db-kit)
+  print "Aliases"
+  print "  truffle: $(which truffle)"
+  print "  db-kit: $(which db-kit)"
+  print "Dependencies"
+  local yok="  ☑️  "
+  local nok="  ⚠️  "
+  declare -a CMDS=( "nvm" "faker-cli" "tree" )
+  for cmd in "${CMDS[@]}"; do
+    if [ $(command -v $cmd) ]; then
+      print "${yok}${cmd}: detected"
+    else
+      print "${nok}${cmd}: missing: please install"
+    fi
+  done
   print
   truffle version
 }
@@ -38,14 +48,14 @@ use-db-stable () {
 }
 
 truffle-link () {
-  echo "usage: from root folder\n\ttruffle-link pkg1 pkg2 pkg3"
+  print "usage: from root folder\n\ttruffle-link pkg1 pkg2 pkg3"
   for pkg in "$@";  do
     cd packages/$pkg ; yarn unlink ; yarn link ; cd -
   done
 }
 
 truffle-unlink () {
-  echo "usage: from root folder\n\ttruffle-unlink pkg1 pkg2 pkg3"
+  print "usage: from root folder\n\ttruffle-unlink pkg1 pkg2 pkg3"
   for pkg in "$@";  do
     cd packages/$pkg ; yarn unlink ; cd -
   done
@@ -66,7 +76,7 @@ reprod () {
 
   local dir="${parent}/${name}"
   if [ -d "${dir}" ]; then
-      echo "Warning: directory exists for today with name \"${name}\""
+      print "Warning: directory exists for today with name \"${name}\""
   fi
 
   mkdir -p $dir && cd $_

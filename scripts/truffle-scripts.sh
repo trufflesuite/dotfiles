@@ -48,14 +48,14 @@ use-db-stable () {
 }
 
 truffle-link () {
-  echo "usage: from root folder\n\ttruffle-link pkg1 pkg2 pkg3"
+  print "usage: from root folder\n\ttruffle-link pkg1 pkg2 pkg3"
   for pkg in "$@";  do
     cd packages/$pkg ; yarn unlink ; yarn link ; cd -
   done
 }
 
 truffle-unlink () {
-  echo "usage: from root folder\n\ttruffle-unlink pkg1 pkg2 pkg3"
+  print "usage: from root folder\n\ttruffle-unlink pkg1 pkg2 pkg3"
   for pkg in "$@";  do
     cd packages/$pkg ; yarn unlink ; cd -
   done
@@ -76,7 +76,7 @@ reprod () {
 
   local dir="${parent}/${name}"
   if [ -d "${dir}" ]; then
-      echo "Warning: directory exists for today with name \"${name}\""
+      print "Warning: directory exists for today with name \"${name}\""
   fi
 
   mkdir -p $dir

@@ -7,7 +7,7 @@ show-truffle-env () {
   print "Dependencies"
   local yok="  ☑️  "
   local nok="  ⚠️  "
-  declare -a CMDS=( "nvm" "tree" )
+  declare -a CMDS=( "nvm" "faker-cli" "tree" )
   for cmd in "${CMDS[@]}"; do
     if [ $(command -v $cmd) ]; then
       print "${yok}${cmd}: detected"

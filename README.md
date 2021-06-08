@@ -83,7 +83,7 @@ work/reproduce      <-- This is REPROD_ROOT
 Before using list-reprod please install the `brew` utility for your Operating System
 
 ```
- brew install tree
+ brew install tree # for OS X
 ```
 
 For displaying directories as trees.

@@ -80,7 +80,7 @@ work/reproduce      <-- This is REPROD_ROOT
 
 ```
 
-Before using list-reprod
+Before using list-reprod please install the `brew` utility for your Operating System
 
 ```
  brew install tree

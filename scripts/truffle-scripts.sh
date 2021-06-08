@@ -1,10 +1,20 @@
 ## Executing these functions will create aliases for truffle & db-kit
-## 
 
-## aliases
 show-truffle-env () {
-  print truffle: $(which truffle)
-  print db-kit: $(which db-kit)
+  print "Aliases"
+  print "  truffle: $(which truffle)"
+  print "  db-kit: $(which db-kit)"
+  print "Dependencies"
+  local yok="  ☑️  "
+  local nok="  ⚠️  "
+  declare -a CMDS=( "nvm" "tree" )
+  for cmd in "${CMDS[@]}"; do
+    if [ $(command -v $cmd) ]; then
+      print "${yok}${cmd}: detected"
+    else
+      print "${nok}${cmd}: missing: please install"
+    fi
+  done
   print
   truffle version
 }

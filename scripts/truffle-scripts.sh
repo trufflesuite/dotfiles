@@ -38,16 +38,37 @@ use-db-stable () {
 }
 
 truffle-link () {
-  echo "usage: from root folder\n\ttruffle-link pkg1 pkg2 pkg3"
-  for pkg in "$@";  do
-    cd packages/$pkg ; yarn unlink ; yarn link ; cd -
-  done
+  if [ "$PWD" != "$TRUFFLE_ROOT" ]; then 
+    echo "\e[1;31m[Warning]\e[0m This command can only be run from TRUFFLE_ROOT: $TRUFFLE_ROOT\n"
+  fi
+
+  if [ $# -eq 0 ]; then 
+    echo "usage: truffle-link pkg1 pkg2 pkg3\n"
+  else
+    for pkg in "$@";  do
+      if [ -d "packages/$pkg" ]; then
+        cd packages/$pkg ; yarn unlink ; yarn link ; cd -
+        echo linking $pkg
+      else
+        echo "\e[1;31m$pkg\e[0m is not a Truffle package!"
+      fi
+    done
+  fi
 }
 
 truffle-unlink () {
-  echo "usage: from root folder\n\ttruffle-unlink pkg1 pkg2 pkg3"
+  if [ "$PWD" != "$TRUFFLE_ROOT" ]; then 
+    echo "\e[1;31m[Warning]\e[0m This command can only be run from TRUFFLE_ROOT: $TRUFFLE_ROOT\n"
+  fi
+  echo "usage: truffle-unlink pkg1 pkg2 pkg3\n"
+
   for pkg in "$@";  do
+    if [ -d "packages/$pkg" ]; then
     cd packages/$pkg ; yarn unlink ; cd -
+    echo linking $pkg
+  else
+    echo "\e[1;31m$pkg\e[0m is not a Truffle package!"
+    fi
   done
 }
 

@@ -6,6 +6,7 @@ Useful scripts for Truffle testers and maintainers on \*nix OS.
   - [Node Version Manager](#node-version-manager)
   - [dotfiles](#dotfiles)
 - [Command Reference](#command-reference)
+  - [eip](#eip)
   - [reprod](#reprod)
   - [list-reprod-year](#list-reprod-year)
   - [list-reprod-month](#list-reprod-month)
@@ -27,8 +28,13 @@ Useful scripts for Truffle testers and maintainers on \*nix OS.
 
 It's recommended that you use [Node Version Manager
 (nvm)](https://github.com/nvm-sh/nvm) to manage node version for Truffle
-development. Furthermore, configure nvm to install `faker-cli` for every node
+development. **Futhermore**, 👉  configure nvm to install `faker-cli` for every node
 version it manages by creating a default-packages file in the $NVM_DIR. [See documentation](https://github.com/nvm-sh/nvm#default-global-packages-from-file-while-installing)
+
+### FZF
+
+Optionally install [fzf](https://github.com/junegunn/fzf), a general-purpose command-line fuzzy
+finder. This tool is a 🦄. You can follow the instructions on its website.
 
 ### Scripts
 
@@ -42,17 +48,28 @@ version it manages by creating a default-packages file in the $NVM_DIR. [See doc
    ```sh
    # in your .(zsh/bash)rc file
 
+   ## TRUFFLE_DOTFILES is the path to where you installed this dotfiles project
+   export TRUFFLE_DOTFILES=~/.truffle-dotfiles # YOU SHOULD ADJUST THIS FOR YOURSELF
+
    ## TRUFFLE_ROOT is the path to your cloned truffle project
    export TRUFFLE_ROOT=~/work/truffle # YOU SHOULD ADJUST THIS FOR YOURSELF
 
    ## REPROD_ROOT is where you would like reproductions to be created.
    export REPROD_ROOT=~/work/reprod
 
-   source ~/.truffle-dotfiles/scripts/truffle-scripts.sh
+   for fn in $(ls ${TRUFFLE_DOTFILES}/scripts); do
+     source "${TRUFFLE_DOTFILES}/scripts/${fn}"
+   done
 
    ```
 
 ## Command Reference
+
+### eip
+
+An [fzf](https://github.com/junegunn/fzf) helper to search EIPs by number or
+name. Selecting it will open the EIP in your browser. [See this
+demo](https://www.youtube.com/watch?v=PIUpDMqufVc)
 
 ### reprod
 

@@ -5,20 +5,18 @@ if [ ! -d EIPs ]; then
 	git clone --depth 1 https://github.com/ethereum/EIPs.git
 fi
 
-for no in $(ls EIPs/EIPS | sed 's:eip-::' | sed 's:.md::' | sort -n); do
+the_eips=$(find EIPs/EIPS -type f -name \*.md | sed -E 's:.+-::' | sed 's:.md::' | sort -n)
+for no in $the_eips; do
 	file="EIPs/EIPS/eip-$no.md"
 
-	# extract lines from ^eip to ^title
-	# delete header of tuple
-	# convert linefeeds to tabs
-	sed -n '/^eip:/,/^title/p;' "$file" | sed -E 's/^.\+: //' | tr '\n' '\t'
+	# extract lines from ^eip to ^title forming tuples
+	# delete header of tuples, "header: data"
+	# convert linefeeds to spaces
+	# squash spaces
+	sed -n '/^eip:/,/^title/p;' "$file" | sed -E 's/^[^:]+://' | tr '\n' ' ' | tr -s ' '
 
 	# separate entries
 	printf "\n"
-done | sed -E 's/(eip:|title:|\t)//g' | sed -E '/^$/d' >.cache/eip-index
+done | sed -E 's/(eip|title):/ /g' | sed -E '/^$/d' >.cache/eip-index
 
 [[ -d EIPs ]] && rm -rf EIPs
-
-# TODO
-# extract abstract
-# sed -E -n '/# Abstract/,/# Motivation/p;' $file | sed '1d;$d' > "./abstract/$no-abstract.txt"

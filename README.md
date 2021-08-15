@@ -42,25 +42,22 @@ finder. This tool is a 🦄. You can follow the instructions on its website.
    ```sh
    git clone git@github.com:trufflesuite/dotfiles ~/.truffle-dotfiles
    ```
-2. edit your shell startup script to set a couple of env variables, and
-   source the dotfiles.
+2. edit your shell startup script to source the `init.sh` file
 
    ```sh
-   # in your .(zsh/bash)rc file
+   # in your .(zsh/bash)rc file...
 
-   ## TRUFFLE_DOTFILES is the path to where you installed this dotfiles project
-   export TRUFFLE_DOTFILES=~/.truffle-dotfiles # YOU SHOULD ADJUST THIS FOR YOURSELF
+   ## TRUFFLE_DOTFILES is the directory where you cloned the dotfiles repo
+   export TRUFFLE_DOTFILES=$HOME/.truffle-dotfiles
+   
+   ## REPROD_ROOT is where you would like reproductions to be created
+   export REPROD_ROOT=~/work/reproduce
 
    ## TRUFFLE_ROOT is the path to your cloned truffle project
-   export TRUFFLE_ROOT=~/work/truffle # YOU SHOULD ADJUST THIS FOR YOURSELF
+   export TRUFFLE_ROOT=~/work/truffle
 
-   ## REPROD_ROOT is where you would like reproductions to be created.
-   export REPROD_ROOT=~/work/reprod
-
-   for fn in $(ls ${TRUFFLE_DOTFILES}/scripts); do
-     source "${TRUFFLE_DOTFILES}/scripts/${fn}"
-   done
-
+   # source the init.sh file. This depends on where you cloned the repo
+   source $TRUFFLE_DOTFILES/init.sh 
    ```
 
 ## Command Reference

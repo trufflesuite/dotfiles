@@ -28,7 +28,7 @@ Useful scripts for Truffle testers and maintainers on \*nix OS.
 
 It's recommended that you use [Node Version Manager
 (nvm)](https://github.com/nvm-sh/nvm) to manage node version for Truffle
-development. **Futhermore**, 👉  configure nvm to install `faker-cli` for every node
+development. **Futhermore**, 👉 configure nvm to install `faker-cli` for every node
 version it manages by creating a default-packages file in the $NVM_DIR. [See documentation](https://github.com/nvm-sh/nvm#default-global-packages-from-file-while-installing)
 
 ### FZF
@@ -49,7 +49,7 @@ finder. This tool is a 🦄. You can follow the instructions on its website.
 
    ## TRUFFLE_DOTFILES is the directory where you cloned the dotfiles repo
    export TRUFFLE_DOTFILES=$HOME/.truffle-dotfiles
-   
+
    ## REPROD_ROOT is where you would like reproductions to be created
    export REPROD_ROOT=~/work/reproduce
 
@@ -57,7 +57,7 @@ finder. This tool is a 🦄. You can follow the instructions on its website.
    export TRUFFLE_ROOT=~/work/truffle
 
    # source the init.sh file. This depends on where you cloned the repo
-   source $TRUFFLE_DOTFILES/init.sh 
+   source $TRUFFLE_DOTFILES/init.sh
    ```
 
 ## Command Reference
@@ -67,6 +67,8 @@ finder. This tool is a 🦄. You can follow the instructions on its website.
 An [fzf](https://github.com/junegunn/fzf) helper to search EIPs by number or
 name. Selecting it will open the EIP in your browser. [See this
 demo](https://www.youtube.com/watch?v=PIUpDMqufVc)
+
+![gif in action](./assets/eip.gif)
 
 ### reprod
 

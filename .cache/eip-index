@@ -315,7 +315,7 @@
  3000 Optimistic enactment governance standard 
  3005 Batched meta transactions 
  3009 Transfer With Authorization 
- 3014 `eth_symbol` JSON-RPC method 
+ 3014 eth_symbol JSON-RPC method 
  3026 BW6-761 curve operations 
  3030 BLS Remote Signer HTTP API 
  3041 Adds `baseFee` to `eth_getBlockByHash` 

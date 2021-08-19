@@ -8,6 +8,9 @@ function eip() {
 			| awk '{ print $1 }'
 	)
 
+  # do nothing if nothing selected
+  [[ -z $eip_number ]] && return
+
 	if uname | grep -q Darwin; then
     # OS X
 		open -a 'Google Chrome' "${URL}-${eip_number}.md"

@@ -1,22 +1,24 @@
-function eip () {
-  URL="https://github.com/ethereum/EIPs/blob/master/EIPS"
-  (cat "$TRUFFLE_DOTFILES/.cache/eip-index") |
-  fzf +s \
-    --prompt 'Ethereum Improvement Proposal (EIP) >' \
-    --preview='echo {}' --preview-window=down:1:wrap \
-    --height=80% | \
-  awk '{ print $1 }'  | \
-  if $(uname | grep -iq darwin); then
-    xargs -I '{}' open -a 'Google Chrome' "${URL}/eip-{}.md"
-    # xargs -I '{}' open -a 'Safari' "${URL}/eip-{}.md"
-  else
-    xargs -I '{}' brave "${URL}/eip-{}.md"
-    # xargs -I '{}' google-chrome-beta "${URL}/eip-{}.md"
-    # xargs -I '{}' google-chrome-stable "${URL}/eip-{}.md"
+function eip() {
+	URL="https://github.com/ethereum/EIPs/blob/master/EIPS/eip"
+	eip_number=$(
+		fzf --no-sort \
+			--prompt 'Ethereum Improvement Proposal (EIP) >' \
+			--preview='echo {}' --preview-window=down:1:wrap \
+			--height=80% <"$TRUFFLE_DOTFILES/.cache/eip-index" \
+			| awk '{ print $1 }'
+	)
 
-    # xdg-open has issues on arch, which might be my setup.
-    # xargs -I '{}' nohup xdg-open  "${URL}/eip-{}.md" > /dev/null 2>&1 &
-  fi
+	if uname | grep -q Darwin; then
+    # OS X
+		open -a 'Google Chrome' "${URL}-${eip_number}.md"
+	elif uname -a | grep -q microsoft; then
+    # WSL2
+    /mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe "${URL}-${eip_number}.md"
+    # /mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe "${URL}-${eip_number}.md" 
+	else
+    # default, Linux
+		brave "${URL}-${eip_number}.md"
+	fi
 }
 
 #vi: ft=zsh

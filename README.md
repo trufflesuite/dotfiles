@@ -26,9 +26,24 @@ Useful scripts for Truffle testers and maintainers on \*nix OS.
 ### Node Version Manager
 
 It's recommended that you use [Node Version Manager
-(nvm)](https://github.com/nvm-sh/nvm) to manage node version for Truffle
-development. Furthermore, configure nvm to install `faker-cli` for every node
-version it manages by creating a default-packages file in the $NVM_DIR. [See documentation](https://github.com/nvm-sh/nvm#default-global-packages-from-file-while-installing)
+(nvm)](https://github.com/nvm-sh/nvm) to manage node versions for Truffle
+development.
+A list of frequently used packages can be stored in a file named `default-packages` at the NVM directory , this list will be automatically installed globally every time a new node version is added.
+
+First, create the $NVM_DIR/default-packages file.
+
+```sh
+touch $NVM_DIR/default-packages
+```
+
+We recommend adding `faker-cli` and `typescript`.
+
+```sh
+# $NVM_DIR/default-packages
+
+faker-cli
+typescript
+```
 
 ### Scripts
 

@@ -212,8 +212,8 @@ $ which truffle
 Similarly, aliases are created for @truffle/db-kit
 3 commands are available
 
-| command             | description                                                |
-| ------------------- | ---------------------------------------------------------- |
-| `use-db-core`       | use local developed version of `db-kit`                    |
-| `use-db-core-debug` | use local version of `db-kit` with debug inspector enabled |
-| `use-db-stable`     | use npm installed version of `db-kit`                      |
+| command                | description                                                |
+| ---------------------- | ---------------------------------------------------------- |
+| `use-dbkit-core`       | use local developed version of `db-kit`                    |
+| `use-dbkit-core-debug` | use local version of `db-kit` with debug inspector enabled |
+| `use-dbkit-stable`     | use npm installed version of `db-kit`                      |

@@ -1,40 +1,80 @@
 ## Executing these functions will create aliases for truffle & db-kit
 ##
 
+if [ -z "${TRUFFLE_ENV_NAME}" ]; then
+  export TRUFFLE_ENV_NAME="core"
+fi
+
+if [ -z "${DBKIT_ENV_NAME}" ]; then
+  export DBKIT_ENV_NAME="core"
+fi
+
 ## aliases
+show-truffle-cli-entrypoint() {
+  case "${TRUFFLE_ENV_NAME}" in 
+    stable)
+      echo "$(npm prefix -g)/bin/truffle"
+      ;;
+    core|core-debug)
+      echo "${TRUFFLE_ROOT}/packages/core/cli.js"
+      ;;
+    bundle)
+      echo "${TRUFFLE_ROOT}/packages/truffle/build/cli.bundled.js"
+      ;;
+    *)
+      echo "truffle environment named '$TRUFFLE_ENV_NAME' not recognized" >&2
+      ;;
+  esac
+}
+
+show-dbkit-cli-entrypoint() {
+  case "${DBKIT_ENV_NAME}" in 
+    stable)
+      echo "$(npm prefix -g)/bin/db-kit"
+      ;;
+    core|core-debug)
+      echo "${TRUFFLE_ROOT}/packages/db-kit/dist/bin/cli.js"
+      ;;
+    *)
+      echo "db-kit environment named '$DBKIT_ENV_NAME' not recognized" >&2
+      return 1
+      ;;
+  esac
+}
+
 show-truffle-env () {
-  print truffle: $(which truffle)
-  print db-kit: $(which db-kit)
+  print truffle: "${TRUFFLE_ENV_NAME}" "($(show-truffle-cli-entrypoint))"
+  print db-kit: "${DBKIT_ENV_NAME}" "($(show-dbkit-cli-entrypoint))"
   print
   truffle version
 }
 
 use-truffle-core () {
-  alias truffle=node\ ${TRUFFLE_ROOT}/packages/core/cli.js
+  export TRUFFLE_ENV_NAME="core"
 }
 
 use-truffle-core-debug () {
-  alias truffle=node\ --inspect-brk\ ${TRUFFLE_ROOT}/packages/core/cli.js
+  export TRUFFLE_ENV_NAME="core-debug"
 }
 
 use-truffle-bundle () {
-  alias truffle=node\ ${TRUFFLE_ROOT}/packages/truffle/build/cli.bundled.js
+  export TRUFFLE_ENV_NAME="bundle"
 }
 
 use-truffle-stable () {
-  unalias truffle
+  export TRUFFLE_ENV_NAME="stable"
 }
 
 use-dbkit-core () {
-  alias db-kit=node\ ${TRUFFLE_ROOT}/packages/db-kit/dist/bin/cli.js
+  export DBKIT_ENV_NAME="core"
 }
 
 use-dbkit-core-debug () {
-  alias  db-kit=node\ --inspect-brk\ ${TRUFFLE_ROOT}/packages/db-kit/dist/bin/cli.js
+  export DBKIT_ENV_NAME="core-debug"
 }
 
 use-dbkit-stable () {
-  unalias db-kit
+  export DBKIT_ENV_NAME="stable"
 }
 
 truffle-link () {
@@ -70,6 +110,34 @@ truffle-unlink () {
     echo "\e[1;31m$pkg\e[0m is not a Truffle package!"
     fi
   done
+}
+
+truffle () {
+  TRUFFLE_CLI_ENTRYPOINT="$(show-truffle-cli-entrypoint)"
+
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
+
+  NODE_ARGS=""
+
+  echo "${TRUFFLE_ENV_NAME}" | grep -qE -- '-debug$' && NODE_ARGS="--inspect-brk"
+
+  node $NODE_ARGS "${TRUFFLE_CLI_ENTRYPOINT}" $@
+}
+
+db-kit () {
+  DBKIT_CLI_ENTRYPOINT="$(show-truffle-cli-entrypoint)"
+
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
+
+  NODE_ARGS=""
+
+  echo "${DBKIT_ENV_NAME}" | grep -qE -- '-debug$' && NODE_ARGS="--inspect-brk"
+
+  node $NODE_ARGS "${DBKIT_CLI_ENTRYPOINT}" $@
 }
 
 reprod () {

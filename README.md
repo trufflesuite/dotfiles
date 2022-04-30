@@ -36,14 +36,17 @@ First, create the $NVM_DIR/default-packages file.
 touch $NVM_DIR/default-packages
 ```
 
-We recommend adding `faker-cli` and `typescript`.
+We recommend adding `faker-cli`, `typescript` and `yarn`.
 
 ```sh
 # $NVM_DIR/default-packages
 
 faker-cli
 typescript
+yarn
 ```
+
+✨ We currently recommend using Node v14(LTS) or v16(LTS) with NPM 6 for `yarn bootstrap` truffle. ✨
 
 ### Scripts
 

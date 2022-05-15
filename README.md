@@ -67,6 +67,21 @@ typescript
 
    ```
 
+#### Optional install
+
+If you use git-worktrees you can configure the following to enable
+ - use-truffle-tree
+ - use-truffle-tree-debug
+ - use-truffle-tree-bundle
+ - use-truffle-tree-bundle-debug
+
+TODO: describe how the opinionated worktree setup.
+
+```
+# The location for the truffle tree repo.
+export TRUFFLE_TREE_ROOT=~/work/trees/truffle
+```
+
 ## Command Reference
 
 ### reprod

@@ -21,6 +21,12 @@ show-truffle-cli-entrypoint() {
     bundle)
       echo "${TRUFFLE_ROOT}/packages/truffle/build/cli.bundled.js"
       ;;
+    tree|tree-debug)
+      echo "${TRUFFLE_TREE_ROOT}/${TRUFFLE_TREE_BRANCH}/packages/core/cli.js"
+      ;;
+    tree-bundle)
+      echo "${TRUFFLE_TREE_ROOT}/${TRUFFLE_TREE_BRANCH}/packages/truffle/build/cli.bundled.js"
+      ;;
     *)
       echo "truffle environment named '$TRUFFLE_ENV_NAME' not recognized" >&2
       ;;
@@ -55,6 +61,38 @@ use-truffle-core () {
 
 use-truffle-core-debug () {
   export TRUFFLE_ENV_NAME="core-debug"
+}
+
+update-truffle-trees () {
+  source ${TRUFFLE_DOTFILES}/scripts/trees.sh
+  printf "git-worktrees updated!\n"
+}
+
+use-truffle-tree () {
+  if [[ -z "${TRUFFLE_TREE_ROOT}" ]]; then
+    echo git-worktree not configured for truffle 
+  else
+    export TRUFFLE_TREE_BRANCH=$1
+    export TRUFFLE_ENV_NAME="tree"
+  fi
+}
+
+use-truffle-tree-debug () {
+  if [[ -z "${TRUFFLE_TREE_ROOT}" ]]; then
+    echo git-worktree not configured for truffle 
+  else
+    export TRUFFLE_TREE_BRANCH=$1
+    export TRUFFLE_ENV_NAME="tree-debug"
+  fi
+}
+
+use-truffle-tree-bundle () {
+  if [[ -z "${TRUFFLE_TREE_ROOT}" ]]; then
+    echo git-worktree not configured for truffle 
+  else
+    export TRUFFLE_TREE_BRANCH=$1
+    export TRUFFLE_ENV_NAME="tree-bundle"
+  fi
 }
 
 use-truffle-bundle () {

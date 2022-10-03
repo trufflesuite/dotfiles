@@ -179,7 +179,7 @@ Invoke the truffle version you're currently developing.
 
 ```
 $ use-truffle-core
-$ which truffle
+$ show-truffle-env
 truffle: aliased to node /home/amal/work/truffle/packages/core/cli.js
 ```
 
@@ -194,7 +194,7 @@ chrome browser.**
 
 ```
 $ use-truffle-core-debug
-$ which truffle
+$ show-truffle-env
 truffle: aliased to node --inspect-brk /home/amal/work/truffle/packages/core/cli.js
 ```
 
@@ -208,7 +208,7 @@ already built truffle
 
 ```
 $ use-truffle-bundle
-$ which truffle
+$ show-truffle-env
 truffle: aliased to node /home/amal/work/truffle/packages/truffle/build/cli.bundled.js
 ```
 
@@ -221,7 +221,7 @@ truffle to allow normal PATH environment resolution.
 
 ```
 $ use-truffle-stable
-$ which truffle
+$ show-truffle-env
 /home/amal/.nvm/versions/node/v12.22.1/bin/truffle
 ```
 

@@ -190,7 +190,7 @@ enabled. This allows you to debug the truffle process by using a debug client.
 For example, to use chrome dev tools, navigate to `chrome://inspect` **in a
 chrome browser.**
 
-`usage: use-truffle-core`
+`usage: use-truffle-core-debug`
 
 ```
 $ use-truffle-core-debug

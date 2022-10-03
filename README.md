@@ -179,8 +179,15 @@ Invoke the truffle version you're currently developing.
 
 ```
 $ use-truffle-core
-$ which truffle
-truffle: aliased to node /home/amal/work/truffle/packages/core/cli.js
+$ show-truffle-env
+truffle: aliased to node /Users/liangliang/code/truffle/packages/core/cli.js
+db-kit: db-kit not found
+
+Truffle v5.5.32 (core: 5.5.32)
+Ganache v7.4.3
+Solidity - 0.8.13 (solc-js)
+Node v16.16.0
+Web3.js v1.7.4
 ```
 
 #### use-truffle-core-debug
@@ -194,8 +201,15 @@ chrome browser.**
 
 ```
 $ use-truffle-core-debug
-$ which truffle
-truffle: aliased to node --inspect-brk /home/amal/work/truffle/packages/core/cli.js
+$ show-truffle-env
+truffle: truffle: aliased to node --inspect-brk /Users/liangliang/code/truffle/packages/core/cli.js
+db-kit: db-kit not found
+
+Truffle v5.5.32 (core: 5.5.32)
+Ganache v7.4.3
+Solidity - 0.8.13 (solc-js)
+Node v16.16.0
+Web3.js v1.7.4
 ```
 
 ## use-truffle-bundle
@@ -208,8 +222,15 @@ already built truffle
 
 ```
 $ use-truffle-bundle
-$ which truffle
-truffle: aliased to node /home/amal/work/truffle/packages/truffle/build/cli.bundled.js
+$ show-truffle-env
+truffle: truffle: aliased to node /Users/liangliang/code/truffle/packages/truffle/build/cli.bundled.js
+db-kit: db-kit not found
+
+Truffle v5.5.32 (core: 5.5.32)
+Ganache v7.4.3
+Solidity - 0.8.13 (solc-js)
+Node v16.16.0
+Web3.js v1.7.4
 ```
 
 ## use-truffle-stable
@@ -221,8 +242,15 @@ truffle to allow normal PATH environment resolution.
 
 ```
 $ use-truffle-stable
-$ which truffle
-/home/amal/.nvm/versions/node/v12.22.1/bin/truffle
+$ show-truffle-env
+truffle: /Users/liangliang/.nvm/versions/node/v16.16.0/bin/truffle
+db-kit: db-kit not found
+
+Truffle v5.5.32 (core: 5.5.32)
+Ganache v7.4.3
+Solidity - 0.8.13 (solc-js)
+Node v16.16.0
+Web3.js v1.7.4
 ```
 
 ## @truffle/db-kit

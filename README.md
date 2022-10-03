@@ -187,7 +187,7 @@ Truffle v5.5.32 (core: 5.5.32)
 Ganache v7.4.3
 Solidity - 0.8.13 (solc-js)
 Node v16.16.0
-Web3.js v1.7.4e/cli.js
+Web3.js v1.7.4
 ```
 
 #### use-truffle-core-debug

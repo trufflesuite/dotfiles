@@ -57,10 +57,12 @@ show-truffle-env () {
 
 use-truffle-core () {
   export TRUFFLE_ENV_NAME="core"
+  source ~/.oh-my-zsh/themes/mira.zsh-theme
 }
 
 use-truffle-core-debug () {
   export TRUFFLE_ENV_NAME="core-debug"
+  source ~/.oh-my-zsh/themes/mira.zsh-theme
 }
 
 update-truffle-trees () {
@@ -74,6 +76,7 @@ use-truffle-tree () {
   else
     export TRUFFLE_TREE_BRANCH=$1
     export TRUFFLE_ENV_NAME="tree"
+    source ~/.oh-my-zsh/themes/mira.zsh-theme
   fi
 }
 
@@ -83,6 +86,7 @@ use-truffle-tree-debug () {
   else
     export TRUFFLE_TREE_BRANCH=$1
     export TRUFFLE_ENV_NAME="tree-debug"
+    source ~/.oh-my-zsh/themes/mira.zsh-theme
   fi
 }
 
@@ -92,15 +96,18 @@ use-truffle-tree-bundle () {
   else
     export TRUFFLE_TREE_BRANCH=$1
     export TRUFFLE_ENV_NAME="tree-bundle"
+    source ~/.oh-my-zsh/themes/mira.zsh-theme
   fi
 }
 
 use-truffle-bundle () {
   export TRUFFLE_ENV_NAME="bundle"
+  source ~/.oh-my-zsh/themes/mira.zsh-theme
 }
 
 use-truffle-stable () {
   export TRUFFLE_ENV_NAME="stable"
+  source ~/.oh-my-zsh/themes/mira.zsh-theme
 }
 
 use-dbkit-core () {
